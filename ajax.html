@@ -12,7 +12,7 @@
 		xhr.open('GET', '/homework28/ajax.json', true)
 		xhr.send()
 		xhr.onload = function(){
-			console.log(xhr.responseText)
+			console.log(JSON.parse(xhr.responseText))
 		}
 	</script>
 </body>
