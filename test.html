@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!-- node安装提示话语如下-因http-server 引出
+	$ npm install -g http-server   //全局安装http-server.
+	然后在终端切换到你的工作目录
+	输入http-server
+	则启动了本地网络服务器
+
+
+	This package has installed:
+	•	Node.js v8.11.3 to /usr/local/bin/node
+	•	npm v5.6.0 to /usr/local/bin/npm
+	Make sure that /usr/local/bin is in your $PATH.
+	 -->
+</head>
+<body>
+	test
+<!-- 	<script>
+		var xhr = new XMLHttpRequest()
+		// 设置false 同步获取数据方式
+		xhr.open('GET', 'test.json', false)
+		xhr.send()
+		if(xhr.status >= 200 && xhr.status <= 300 || xhr.status === 304){
+			var date = xhr.responseText
+			console.log(xhr.status) //200 是正常
+			console.log(date)
+		}else{
+			console.log('error')
+		}
+	</script> -->
+	<script>
+		var xhr = new XMLHttpRequest()
+		// true 异步获取数据方式:一般都用异步 可以不用等待
+		xhr.open('GET', '/login?username=h&age=3', true)//GET 方式 参数放在open内第二个参数 拼接字符串
+		xhr.send()
+
+		// xhr.open('POST', '/test.json', true) //对于POST 则参数放在send内，可做个函数解析对象拼接为字符串
+		// xhr.send(makeUriL({
+		// 	username: 'h',
+		// 	age: 3
+		// }))
+
+		console.log('readystatechange:', xhr.readyState)
+		xhr.addEventListener('readystatechange', function(){
+			console.log('readystatechange:', xhr.readyState)
+		})
+
+		// 增加监听事件
+		xhr.addEventListener('load', function(){
+			if(xhr.status >= 200 && xhr.status <= 300 || xhr.status === 304){
+				var date = xhr.responseText
+				console.log(xhr.status) //404 是不存在
+				console.log(date)
+			}else{
+				console.log('error')
+			}
+		})
+
+		// xhr.ontimeout 设置到时时间
+		makeUriL({
+			username: 'h',
+			age: 3
+		})
+
+		function makeUriL(obj){
+			let arr = []
+			for(var key in obj){
+				arr.push(key+'='+obj[key])
+			}
+			return arr.join('&')
+		}
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ajax</title>
+</head>
+<body>
+	<script>
+		//根据城市获取当天的天气
+		//根据城市获取某一天的天气
+		var xhr = new XMLHttpRequest()
+		xhr.open('GET', '/ajax.json', true)
+		xhr.send()
+		xhr.onload = function(){
+			console.log(xhr.responseText)
+		}
+	</script>
+</body>
+</html>
